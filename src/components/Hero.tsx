@@ -58,7 +58,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       </div>
 
       <div className="container perspective-viewport" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'center' }} className="hero-grid">
+        <div className="hero-grid">
           
           {/* Left Column: Text & CTAs */}
           <div className="animate-fade-in">
