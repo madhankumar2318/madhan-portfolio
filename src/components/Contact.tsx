@@ -46,21 +46,43 @@ export const Contact: React.FC = () => {
         <div className="grid-2" style={{ alignItems: 'start' }}>
           
           {/* Direct Info Card */}
-          <div className="glass-card" style={{ padding: '2.5rem' }}>
+          <div className="glass-card" style={{ padding: '1.8rem' }}>
             <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>
               Direct Outreach
             </h3>
-            <p style={{ fontSize: '0.98rem', color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.6 }}>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', marginBottom: '1.8rem', lineHeight: 1.6 }}>
               Looking to fill a Software Engineer position or schedule a technical discussion? Reach out directly via email or LinkedIn.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'var(--bg-secondary)', padding: '1rem 1.2rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                  <Mail size={20} color="var(--accent-primary)" />
-                  <div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Email</div>
-                    <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.95rem' }}>{personal.email}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '1.8rem' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '0.8rem',
+                  background: 'var(--bg-secondary)',
+                  padding: '0.9rem 1.1rem',
+                  borderRadius: 'var(--radius-md)',
+                  border: '1px solid var(--border-color)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', minWidth: 0, flex: 1 }}>
+                  <Mail size={20} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
+                  <div style={{ minWidth: 0, flex: 1 }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>Email</div>
+                    <div
+                      style={{
+                        fontWeight: 600,
+                        color: 'var(--text-primary)',
+                        fontSize: '0.88rem',
+                        wordBreak: 'break-all',
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {personal.email}
+                    </div>
                   </div>
                 </div>
                 <button
@@ -70,11 +92,12 @@ export const Contact: React.FC = () => {
                     borderRadius: 'var(--radius-sm)',
                     background: 'var(--bg-tertiary)',
                     border: '1px solid var(--border-color)',
-                    fontSize: '0.8rem',
+                    fontSize: '0.78rem',
                     color: 'var(--text-primary)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.4rem',
+                    flexShrink: 0,
                   }}
                 >
                   {copied ? <CheckCircle size={14} color="var(--accent-emerald)" /> : <Copy size={14} />}
@@ -84,13 +107,13 @@ export const Contact: React.FC = () => {
             </div>
 
             {/* Social Buttons */}
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
               <a
                 href={personal.socials.github}
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
-                style={{ flex: 1 }}
+                style={{ flex: '1 1 140px', padding: '0.6rem 0.8rem', fontSize: '0.85rem' }}
               >
                 <GithubIcon size={18} />
                 <span>GitHub Profile</span>
@@ -100,7 +123,7 @@ export const Contact: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
-                style={{ flex: 1 }}
+                style={{ flex: '1 1 140px', padding: '0.6rem 0.8rem', fontSize: '0.85rem' }}
               >
                 <LinkedinIcon size={18} />
                 <span>LinkedIn</span>
@@ -109,7 +132,7 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Form */}
-          <div className="glass-card" style={{ padding: '2.5rem' }}>
+          <div className="glass-card" style={{ padding: '1.8rem' }}>
             <h3 style={{ fontSize: '1.4rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
               Send a Direct Message
             </h3>
@@ -150,7 +173,7 @@ export const Contact: React.FC = () => {
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border-color)',
                       color: 'var(--text-primary)',
-                      fontSize: '0.95rem',
+                      fontSize: '0.92rem',
                       outline: 'none',
                     }}
                   />
@@ -173,7 +196,7 @@ export const Contact: React.FC = () => {
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border-color)',
                       color: 'var(--text-primary)',
-                      fontSize: '0.95rem',
+                      fontSize: '0.92rem',
                       outline: 'none',
                     }}
                   />
@@ -196,7 +219,7 @@ export const Contact: React.FC = () => {
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border-color)',
                       color: 'var(--text-primary)',
-                      fontSize: '0.95rem',
+                      fontSize: '0.92rem',
                       outline: 'none',
                       resize: 'vertical',
                     }}
