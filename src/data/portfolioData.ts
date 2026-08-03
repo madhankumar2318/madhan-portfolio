@@ -156,9 +156,7 @@ export const portfolioData: PortfolioData = {
       description: 'Modern web frameworks, UI libraries, and microservice APIs.',
       skills: [
         { name: 'React', tag: 'Advanced' },
-        { name: 'FastAPI', tag: 'Proficient' },
         { name: 'Spring Boot', tag: 'Experienced' },
-        { name: 'Tailwind CSS', tag: 'Advanced' },
       ],
     },
     {
