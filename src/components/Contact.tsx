@@ -1,22 +1,48 @@
 import React, { useState } from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { Mail, Send, CheckCircle, Copy, MessageSquare } from 'lucide-react';
+import { Mail, Send, CheckCircle, Copy, MessageSquare, Loader2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
 export const Contact: React.FC = () => {
   const { personal } = portfolioData;
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${personal.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `Portfolio Message from ${formData.name}`,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        alert(`Failed to send message. Please send an email directly to ${personal.email}`);
+      }
+    } catch (err) {
+      console.error('Error submitting contact form:', err);
+      alert(`Error sending message. Please send an email directly to ${personal.email}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCopyEmail = () => {
@@ -72,7 +98,8 @@ export const Contact: React.FC = () => {
                   <Mail size={20} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
                   <div style={{ minWidth: 0, flex: 1 }}>
                     <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>Email</div>
-                    <div
+                    <a
+                      href={`mailto:${personal.email}`}
                       style={{
                         fontWeight: 600,
                         color: 'var(--text-primary)',
@@ -82,7 +109,7 @@ export const Contact: React.FC = () => {
                       }}
                     >
                       {personal.email}
-                    </div>
+                    </a>
                   </div>
                 </div>
                 <button
@@ -149,9 +176,9 @@ export const Contact: React.FC = () => {
                 }}
               >
                 <CheckCircle size={40} color="var(--accent-emerald)" style={{ marginBottom: '1rem' }} />
-                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Message Sent!</h4>
+                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Message Sent Successfully!</h4>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                  Thank you for reaching out. I'll respond within 24 hours.
+                  Thank you for reaching out, Madhan will receive your message in his Gmail inbox!
                 </p>
               </div>
             ) : (
@@ -226,9 +253,14 @@ export const Contact: React.FC = () => {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }}>
-                  <Send size={16} />
-                  <span>Send Message</span>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn btn-primary"
+                  style={{ width: '100%', marginTop: '0.5rem', opacity: isSubmitting ? 0.7 : 1 }}
+                >
+                  {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                  <span>{isSubmitting ? 'Sending to Gmail...' : 'Send Message'}</span>
                 </button>
               </form>
             )}
