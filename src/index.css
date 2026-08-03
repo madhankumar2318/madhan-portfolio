@@ -196,36 +196,20 @@ button {
   position: relative;
 }
 
-/* Interactive 3D Tilt Hover */
+/* Interactive Hover Styles */
 .card-3d {
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  position: relative;
 }
 
 .card-3d:hover {
-  transform: perspective(1000px) rotateX(3deg) rotateY(-4deg) translateZ(10px) scale(1.02);
   background: var(--bg-card-hover);
-  border-color: var(--border-glow);
-  box-shadow: var(--shadow-3d);
+  border-color: var(--accent-primary);
+  box-shadow: 0 8px 30px -5px rgba(99, 102, 241, 0.3);
 }
 
-/* 3D Inner Layer Floating Elevations */
-.card-3d .layer-pop-1 {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateZ(15px);
-}
-
-.card-3d:hover .layer-pop-1 {
-  transform: translateZ(28px);
-}
-
+.card-3d .layer-pop-1,
 .card-3d .layer-pop-2 {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateZ(25px);
-}
-
-.card-3d:hover .layer-pop-2 {
-  transform: translateZ(45px);
+  transition: transform 0.3s ease;
 }
 
 /* Dynamic Hover Border Highlight */
