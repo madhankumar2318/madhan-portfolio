@@ -146,7 +146,6 @@ export const portfolioData: PortfolioData = {
       skills: [
         { name: 'Java', tag: 'Proficient' },
         { name: 'JavaScript', tag: 'Advanced' },
-        { name: 'Python', tag: 'Advanced' },
         { name: 'SQL', tag: 'Proficient' },
         { name: 'HTML', tag: 'Advanced' },
         { name: 'CSS', tag: 'Advanced' },
