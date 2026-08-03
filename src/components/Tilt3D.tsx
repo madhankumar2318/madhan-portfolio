@@ -21,10 +21,11 @@ export const Tilt3D: React.FC<Tilt3DProps> = ({
       className={`glass-card ${className}`}
       style={{
         ...style,
-        transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
-        transition: 'all 0.3s ease',
+        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
         borderColor: isHovered ? 'var(--accent-primary)' : 'var(--border-color)',
-        boxShadow: isHovered ? '0 12px 30px -10px rgba(99, 102, 241, 0.35)' : 'var(--shadow-sm)',
+        boxShadow: isHovered
+          ? '0 8px 30px -5px rgba(99, 102, 241, 0.3), inset 0 0 15px rgba(99, 102, 241, 0.05)'
+          : 'var(--shadow-sm)',
         position: 'relative',
       }}
     >
