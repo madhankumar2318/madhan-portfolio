@@ -198,13 +198,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   <div
                     className="text-gradient"
                     style={{
-                      fontSize: stat.value.length > 9 ? '1.25rem' : '1.65rem',
+                      fontSize: 'clamp(1.15rem, 3.8vw, 1.5rem)',
                       fontWeight: 800,
-                      lineHeight: 1.1,
+                      lineHeight: 1.15,
                       marginBottom: '0.3rem',
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
+                      wordBreak: 'break-word',
                     }}
                   >
                     {stat.value}
