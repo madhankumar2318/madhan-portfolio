@@ -4,6 +4,7 @@ import { Download, Mail, Check, ArrowRight, Sparkles, MapPin } from 'lucide-reac
 import { GithubIcon, LinkedinIcon, LeetcodeIcon } from './Icons';
 import { Canvas3D } from './Canvas3D';
 import { Tilt3D } from './Tilt3D';
+import { AnimatedStat } from './AnimatedStat';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -181,43 +182,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
             <div className="layer-pop-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               {personal.stats.map((stat, i) => (
-                <div
+                <AnimatedStat
                   key={i}
-                  style={{
-                    background: 'var(--bg-secondary)',
-                    padding: '1rem 0.9rem',
-                    borderRadius: 'var(--radius-md)',
-                    border: '1px solid var(--border-color)',
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    minWidth: 0,
-                  }}
-                >
-                  <div
-                    className="text-gradient"
-                    style={{
-                      fontSize: 'clamp(1.15rem, 3.8vw, 1.5rem)',
-                      fontWeight: 800,
-                      lineHeight: 1.15,
-                      marginBottom: '0.3rem',
-                      wordBreak: 'break-word',
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '0.8rem',
-                      color: 'var(--text-secondary)',
-                      fontWeight: 500,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
+                  value={stat.value}
+                  label={stat.label}
+                  delay={i * 150}
+                />
               ))}
             </div>
           </Tilt3D>
