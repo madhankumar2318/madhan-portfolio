@@ -384,3 +384,16 @@ button {
     display: none !important;
   }
 }
+
+/* Status Pill Pulse Animation */
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.35); }
+}
+
+/* Hide status badge on mobile to keep navbar clean */
+@media (max-width: 768px) {
+  .status-badge-desktop {
+    display: none !important;
+  }
+}

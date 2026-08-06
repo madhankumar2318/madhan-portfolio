@@ -1,6 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { X, Printer, Mail, MapPin, Globe, Phone, GraduationCap, Award, Briefcase, Code2 } from 'lucide-react';
+import { X, Printer, Download, Mail, MapPin, Globe, Phone, GraduationCap, Award, Briefcase, Code2 } from 'lucide-react';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -13,6 +13,11 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   const { personal, experiences, projects, education, certifications, skillCategories } = portfolioData;
 
   const handlePrint = () => {
+    window.print();
+  };
+
+  const handleDownloadPDF = () => {
+    // Opens browser print dialog pre-configured as Save to PDF
     window.print();
   };
 
@@ -69,9 +74,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <button onClick={handleDownloadPDF} className="btn btn-primary" style={{ padding: '0.4rem 0.9rem', fontSize: '0.85rem' }}>
+              <Download size={16} />
+              <span>Download PDF</span>
+            </button>
+
             <button onClick={handlePrint} className="btn btn-outline" style={{ padding: '0.4rem 0.9rem', fontSize: '0.85rem' }}>
               <Printer size={16} />
-              <span>Print / Save PDF</span>
+              <span>Print</span>
             </button>
 
             <button

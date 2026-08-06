@@ -63,9 +63,30 @@ export const Projects: React.FC = () => {
                   {project.title}
                 </h3>
 
-                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', marginBottom: '1.4rem', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', marginBottom: '1rem', lineHeight: 1.6 }}>
                   {project.description}
                 </p>
+
+                {/* Architecture Highlights */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.4rem' }}>
+                  {project.architectureHighlights.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        padding: '0.22rem 0.6rem',
+                        borderRadius: 'var(--radius-full)',
+                        background: 'rgba(99, 102, 241, 0.1)',
+                        color: 'var(--accent-primary)',
+                        border: '1px solid rgba(99, 102, 241, 0.25)',
+                        letterSpacing: '0.02em',
+                      }}
+                    >
+                      ◈ {tag}
+                    </span>
+                  ))}
+                </div>
 
                 {/* Measured Impact Bullets */}
                 <div style={{ marginBottom: '1.5rem', background: 'var(--bg-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>

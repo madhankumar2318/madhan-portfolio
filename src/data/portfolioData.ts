@@ -4,6 +4,7 @@ export interface Project {
   category: 'Full-Stack' | 'Frontend' | 'Backend / Cloud' | 'AI / Machine Learning';
   description: string;
   impactMetrics: string[];
+  architectureHighlights: string[];
   techStack: string[];
   image: string;
   liveUrl: string;
@@ -100,6 +101,7 @@ export const portfolioData: PortfolioData = {
         'Optimized stock lookup latency by 85% (<3s response time) with interactive mobile trend charts.',
         'Integrated RAG file workspaces, AI PDF report generation, and an OLED dark-mode dashboard.',
       ],
+      architectureHighlights: ['RAG Vector Workspaces', 'Next.js Edge API', 'FastAPI Microservices'],
       techStack: ['Python', 'TypeScript', 'SQL', 'Next.js', 'FastAPI', 'Tailwind CSS', 'PostgreSQL'],
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
       liveUrl: 'https://autonomous-ai-knowledge-worker.vercel.app/',
@@ -116,6 +118,7 @@ export const portfolioData: PortfolioData = {
         'Engineered AI triage engine using Google Gemini 2.5 Flash with structured JSON schemas, GPS photo capture, & voice input.',
         'Implemented Nodemailer SMTP emails (<10s delivery), Leaflet.js GIS maps, Recharts analytics, & executive PDF exports.',
       ],
+      architectureHighlights: ['Gemini 2.5 Flash Triage', 'Supabase Edge Guards', 'GIS Leaflet Maps'],
       techStack: ['TypeScript', 'Next.js 16', 'React', 'Google Gemini API', 'Supabase', 'Nodemailer', 'Leaflet.js'],
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
       liveUrl: 'https://ai-grievance-system-beta.vercel.app/',
@@ -132,6 +135,7 @@ export const portfolioData: PortfolioData = {
         'Developed React security dashboard backed by Flask API, SQLite DB, & Isolation Forest ML risk engine with WebSocket live updates.',
         'Containerized with Docker Compose, automated PDF reports, Slack alerts, & validated backend stability using 33 automated pytest suites.',
       ],
+      architectureHighlights: ['Isolation Forest ML', 'WebSocket Live Updates', 'Docker Compose'],
       techStack: ['Python', 'React', 'Scikit-Learn', 'SQLite', 'WebSockets', 'Docker', 'Flask'],
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80',
       liveUrl: '',
