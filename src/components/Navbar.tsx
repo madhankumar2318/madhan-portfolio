@@ -92,37 +92,6 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme, onOpenResume
           <span>Madhan<span className="text-gradient">Kumar S</span></span>
         </a>
 
-        {/* Live Status Badge — visible on desktop only */}
-        <div
-          className="status-badge-desktop"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            background: 'rgba(16, 185, 129, 0.08)',
-            border: '1px solid rgba(16, 185, 129, 0.3)',
-            borderRadius: 'var(--radius-full)',
-            padding: '0.3rem 0.9rem',
-            fontSize: '0.78rem',
-            fontWeight: 600,
-            color: 'var(--accent-emerald)',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          <span
-            style={{
-              width: '7px',
-              height: '7px',
-              borderRadius: '50%',
-              background: 'var(--accent-emerald)',
-              display: 'inline-block',
-              animation: 'statusPulse 1.8s ease-in-out infinite',
-              flexShrink: 0,
-            }}
-          />
-          Open for SDE Roles • 2027
-        </div>
-
         {/* Right Header Navigation & Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
           
