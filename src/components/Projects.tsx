@@ -2,7 +2,7 @@ import React from 'react';
 import { portfolioData, type Project } from '../data/portfolioData';
 import { ExternalLink, Layers, TrendingUp } from 'lucide-react';
 import { GithubIcon } from './Icons';
-import { Tilt3D } from './Tilt3D';
+import { GlassSpotlight } from './GlassSpotlight';
 
 export const Projects: React.FC = () => {
   const projects = portfolioData.projects;
@@ -28,14 +28,17 @@ export const Projects: React.FC = () => {
         {/* Projects Grid */}
         <div className="grid-3">
           {projects.map((project: Project) => (
-            <Tilt3D
+            <GlassSpotlight
               key={project.id}
-              maxTilt={6}
+              className=""
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
               }}
+              size={300}
+              strength={0.13}
+              color="99, 102, 241"
             >
               {/* Image Preview Container */}
               <div style={{ position: 'relative', width: '100%', height: '210px', overflow: 'hidden' }}>
@@ -127,7 +130,7 @@ export const Projects: React.FC = () => {
                 </div>
 
               </div>
-            </Tilt3D>
+            </GlassSpotlight>
           ))}
         </div>
 

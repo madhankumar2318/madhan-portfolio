@@ -3,7 +3,7 @@ import { portfolioData } from '../data/portfolioData';
 import { Download, Mail, Check, ArrowRight, Sparkles, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, LeetcodeIcon } from './Icons';
 import { Canvas3D } from './Canvas3D';
-import { Tilt3D } from './Tilt3D';
+import { GlassSpotlight } from './GlassSpotlight';
 import { AnimatedStat } from './AnimatedStat';
 
 interface HeroProps {
@@ -174,13 +174,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
           </div>
 
-          {/* Right Column: Subtle 3D Elevating Key Stats Panel */}
-          <Tilt3D maxTilt={4} style={{ padding: '2rem' }}>
-            <h3 className="layer-pop-1" style={{ fontSize: '1.15rem', marginBottom: '1.2rem', color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.6rem' }}>
+          {/* Right Column: Glass Spotlight Engineering Metrics Panel */}
+          <GlassSpotlight style={{ padding: '2rem' }} size={320} strength={0.14}>
+            <h3 style={{ fontSize: '1.15rem', marginBottom: '1.2rem', color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.6rem' }}>
               Engineering Metrics
             </h3>
 
-            <div className="layer-pop-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               {personal.stats.map((stat, i) => (
                 <AnimatedStat
                   key={i}
@@ -190,7 +190,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 />
               ))}
             </div>
-          </Tilt3D>
+          </GlassSpotlight>
 
         </div>
       </div>
