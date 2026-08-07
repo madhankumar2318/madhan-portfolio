@@ -7,7 +7,7 @@ export const Education: React.FC = () => {
   const { education } = portfolioData;
 
   return (
-    <section id="education" className="section" style={{ background: 'rgba(18, 24, 36, 0.45)' }}>
+    <section id="education" className="section" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container perspective-viewport">
         
         {/* Section Header */}

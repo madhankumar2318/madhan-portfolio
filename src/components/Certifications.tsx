@@ -7,7 +7,7 @@ export const Certifications: React.FC = () => {
   const { certifications } = portfolioData;
 
   return (
-    <section className="section" style={{ background: 'rgba(10, 13, 20, 0.45)' }}>
+    <section className="section" style={{ background: 'var(--bg-primary)' }}>
       <div className="container perspective-viewport">
         
         {/* Section Header */}
