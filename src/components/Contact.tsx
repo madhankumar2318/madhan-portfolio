@@ -54,7 +54,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="section" style={{ background: 'rgba(10, 13, 20, 0.72)' }}>
+    <section id="contact" className="section" style={{ background: 'rgba(10, 13, 20, 0.45)' }}>
       <div className="container">
         
         {/* Section Header */}

@@ -9,7 +9,7 @@ export const Skills: React.FC = () => {
   const categoryIcons = [Code2, Server, Cloud];
 
   return (
-    <section id="skills" className="section" style={{ background: 'rgba(18, 24, 36, 0.72)' }}>
+    <section id="skills" className="section" style={{ background: 'rgba(18, 24, 36, 0.45)' }}>
       <div className="container perspective-viewport">
         
         {/* Section Header */}
