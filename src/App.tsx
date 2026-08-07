@@ -9,7 +9,7 @@ import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
-import { Canvas3D } from './components/Canvas3D';
+import { GeometryBackground } from './components/GeometryBackground';
 
 export function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -26,7 +26,7 @@ export function App() {
   return (
     <div className="app-root" style={{ position: 'relative' }}>
 
-      {/* Global 3D Particle Constellation — fixed behind the entire site */}
+      {/* Global 3D Floating Glass Geometry — fixed behind the entire site */}
       <div
         style={{
           position: 'fixed',
@@ -38,7 +38,7 @@ export function App() {
           pointerEvents: 'none',
         }}
       >
-        <Canvas3D />
+        <GeometryBackground />
       </div>
 
       {/* All content sits above the fixed canvas */}
