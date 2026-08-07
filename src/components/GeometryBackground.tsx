@@ -20,6 +20,7 @@ interface AuroraOrb {
   color: string;
   vx: number;
   vy: number;
+  phase: number;
 }
 
 export const GeometryBackground: React.FC = () => {
@@ -45,8 +46,8 @@ export const GeometryBackground: React.FC = () => {
     // Smooth subtle mouse tracking
     let mxT = 0, myT = 0, mx = 0, my = 0;
     const onMouse = (e: MouseEvent) => {
-      mxT = (e.clientX - W / 2) * 0.0005;
-      myT = (e.clientY - H / 2) * 0.0005;
+      mxT = (e.clientX - W / 2) * 0.0006;
+      myT = (e.clientY - H / 2) * 0.0006;
     };
     window.addEventListener('mousemove', onMouse);
 
@@ -63,30 +64,34 @@ export const GeometryBackground: React.FC = () => {
       'rgba(139, 92, 246, ',  // Violet
       'rgba(6, 182, 212, ',   // Cyan
       'rgba(16, 185, 129, ',  // Emerald
+      'rgba(168, 85, 247, ',  // Purple
     ];
 
+    // Distributed 6 glowing mesh orbs across full depth & vertical space
     const orbs: AuroraOrb[] = [
-      { x: W * 0.2, y: H * 0.25, z: 100, radius: 320, color: SHADE_COLORS[0], vx: 0.15, vy: 0.1 },
-      { x: W * 0.8, y: H * 0.45, z: 200, radius: 280, color: SHADE_COLORS[1], vx: -0.12, vy: 0.14 },
-      { x: W * 0.3, y: H * 0.75, z: 150, radius: 300, color: SHADE_COLORS[2], vx: 0.1, vy: -0.12 },
-      { x: W * 0.7, y: H * 0.15, z: 80,  radius: 250, color: SHADE_COLORS[3], vx: -0.14, vy: -0.08 },
+      { x: W * 0.15, y: H * 0.2, z: 100, radius: 360, color: SHADE_COLORS[0], vx: 0.18, vy: 0.12, phase: 0 },
+      { x: W * 0.82, y: H * 0.35, z: 200, radius: 320, color: SHADE_COLORS[1], vx: -0.15, vy: 0.16, phase: 1.2 },
+      { x: W * 0.25, y: H * 0.65, z: 150, radius: 340, color: SHADE_COLORS[2], vx: 0.14, vy: -0.15, phase: 2.4 },
+      { x: W * 0.75, y: H * 0.85, z: 180, radius: 300, color: SHADE_COLORS[3], vx: -0.16, vy: -0.11, phase: 3.6 },
+      { x: W * 0.5,  y: H * 0.45, z: 120, radius: 380, color: SHADE_COLORS[4], vx: 0.12, vy: -0.14, phase: 4.8 },
+      { x: W * 0.88, y: H * 0.12, z: 90,  radius: 280, color: SHADE_COLORS[0], vx: -0.13, vy: 0.15, phase: 5.5 },
     ];
 
     // ── Tiny Star Dust Particles ──────────────────────────────────────────────
-    const NUM_DUST = 55;
+    const NUM_DUST = 75;
     const dustParticles: Particle[] = Array.from({ length: NUM_DUST }, () => ({
-      x: (Math.random() - 0.5) * W * 1.5,
-      y: (Math.random() - 0.5) * H * 1.5,
+      x: (Math.random() - 0.5) * W * 1.6,
+      y: (Math.random() - 0.5) * H * 1.6,
       z: Math.random() * W,
-      vx: (Math.random() - 0.5) * 0.1,
-      vy: -0.15 - Math.random() * 0.2, // gentle upward float
-      radius: Math.random() * 1.6 + 0.6,
-      color: ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981'][Math.floor(Math.random() * 4)],
+      vx: (Math.random() - 0.5) * 0.12,
+      vy: -0.12 - Math.random() * 0.2, // gentle upward float
+      radius: Math.random() * 1.8 + 0.6,
+      color: ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#a855f7'][Math.floor(Math.random() * 5)],
       pulse: Math.random() * Math.PI * 2,
       pulseSpeed: 0.015 + Math.random() * 0.015,
     }));
 
-    const FOV = 450;
+    const FOV = 480;
 
     const render = () => {
       // Smooth interpolation
@@ -102,19 +107,21 @@ export const GeometryBackground: React.FC = () => {
       orbs.forEach((orb) => {
         orb.x += orb.vx;
         orb.y += orb.vy;
+        orb.phase += 0.008;
 
         // Bounce gently off boundaries
-        if (orb.x < W * 0.1 || orb.x > W * 0.9) orb.vx *= -1;
-        if (orb.y < H * 0.1 || orb.y > H * 0.9) orb.vy *= -1;
+        if (orb.x < -W * 0.1 || orb.x > W * 1.1) orb.vx *= -1;
+        if (orb.y < -H * 0.1 || orb.y > H * 1.1) orb.vy *= -1;
 
         // Perspective position adjusting for scroll & mouse
-        const drawX = orb.x + mx * 50;
-        const drawY = orb.y + my * 50 - (scrollY * 0.05) % H;
+        const pulseScale = 1 + Math.sin(orb.phase) * 0.08;
+        const drawX = orb.x + mx * 60;
+        const drawY = orb.y + my * 60 - (scrollY * 0.08) % H;
 
-        const rad = orb.radius;
+        const rad = orb.radius * pulseScale;
         const grd = ctx.createRadialGradient(drawX, drawY, 0, drawX, drawY, rad);
-        grd.addColorStop(0, orb.color + '0.14)');
-        grd.addColorStop(0.5, orb.color + '0.06)');
+        grd.addColorStop(0, orb.color + '0.22)');
+        grd.addColorStop(0.4, orb.color + '0.10)');
         grd.addColorStop(1, orb.color + '0)');
 
         ctx.beginPath();
@@ -138,7 +145,7 @@ export const GeometryBackground: React.FC = () => {
         // Wrap around vertically
         if (p.y < -H * 0.75) {
           p.y = H * 0.75;
-          p.x = (Math.random() - 0.5) * W * 1.5;
+          p.x = (Math.random() - 0.5) * W * 1.6;
         }
 
         const rx = p.x * cosY - p.z * sinY;
@@ -150,20 +157,20 @@ export const GeometryBackground: React.FC = () => {
         const x2d = rx * scale + cx;
         const y2d = ry * scale + cy;
 
-        const alpha = Math.min(0.6, Math.max(0.08, scale * 0.5)) * (0.7 + 0.3 * Math.sin(p.pulse));
+        const alpha = Math.min(0.7, Math.max(0.12, scale * 0.55)) * (0.7 + 0.3 * Math.sin(p.pulse));
         projected.push({ x: x2d, y: y2d, scale, color: p.color, alpha });
 
         if (scale > 0.05) {
-          const r = Math.max(0.5, p.radius * scale);
+          const r = Math.max(0.6, p.radius * scale);
 
           // Subtle glow
           ctx.beginPath();
-          ctx.arc(x2d, y2d, r * 3, 0, Math.PI * 2);
-          const g = ctx.createRadialGradient(x2d, y2d, 0, x2d, y2d, r * 3);
-          g.addColorStop(0, p.color + '66');
+          ctx.arc(x2d, y2d, r * 3.5, 0, Math.PI * 2);
+          const g = ctx.createRadialGradient(x2d, y2d, 0, x2d, y2d, r * 3.5);
+          g.addColorStop(0, p.color + '88');
           g.addColorStop(1, p.color + '00');
           ctx.fillStyle = g;
-          ctx.globalAlpha = alpha * 0.4;
+          ctx.globalAlpha = alpha * 0.45;
           ctx.fill();
 
           // Particle Core
@@ -176,7 +183,7 @@ export const GeometryBackground: React.FC = () => {
       });
 
       // 3. Subtle distance connections between dust particles
-      ctx.lineWidth = 0.5;
+      ctx.lineWidth = 0.6;
       for (let i = 0; i < projected.length; i++) {
         for (let j = i + 1; j < projected.length; j++) {
           const a = projected[i];
@@ -185,8 +192,8 @@ export const GeometryBackground: React.FC = () => {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 90) {
-            const lineAlpha = (1 - dist / 90) * 0.12 * Math.min(a.alpha, b.alpha);
+          if (dist < 100) {
+            const lineAlpha = (1 - dist / 100) * 0.16 * Math.min(a.alpha, b.alpha);
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
