@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { portfolioData } from '../data/portfolioData';
 import { Download, Mail, Check, ArrowRight, Sparkles, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, LeetcodeIcon } from './Icons';
-import { Canvas3D } from './Canvas3D';
 import { GlassSpotlight } from './GlassSpotlight';
 import { AnimatedStat } from './AnimatedStat';
 
@@ -21,10 +20,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <section id="hero" className="section" style={{ paddingTop: '8rem', paddingBottom: '6rem', overflow: 'hidden', position: 'relative' }}>
-      
-      {/* Interactive 3D Canvas Particle Background */}
-      <Canvas3D />
+    <section id="hero" className="section" style={{ paddingTop: '8rem', paddingBottom: '6rem', position: 'relative' }}>
 
       {/* Background Glow Orbs */}
       <div

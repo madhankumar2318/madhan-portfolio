@@ -198,7 +198,7 @@ export const Canvas3D: React.FC = () => {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 0,
-        opacity: 0.9,
+        opacity: 0.55,
       }}
     />
   );

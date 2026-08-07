@@ -9,6 +9,7 @@ import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
+import { Canvas3D } from './components/Canvas3D';
 
 export function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -23,29 +24,48 @@ export function App() {
   };
 
   return (
-    <div className="app-root">
-      <Navbar
-        theme={theme}
-        toggleTheme={toggleTheme}
-        onOpenResume={() => setIsResumeOpen(true)}
-      />
+    <div className="app-root" style={{ position: 'relative' }}>
 
-      <main>
-        <Hero onOpenResume={() => setIsResumeOpen(true)} />
-        <Projects />
-        <Skills />
-        <Experience />
-        <Education />
-        <Certifications />
-        <Contact />
-      </main>
+      {/* Global 3D Particle Constellation — fixed behind the entire site */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <Canvas3D />
+      </div>
 
-      <Footer />
+      {/* All content sits above the fixed canvas */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Navbar
+          theme={theme}
+          toggleTheme={toggleTheme}
+          onOpenResume={() => setIsResumeOpen(true)}
+        />
 
-      <ResumeModal
-        isOpen={isResumeOpen}
-        onClose={() => setIsResumeOpen(false)}
-      />
+        <main>
+          <Hero onOpenResume={() => setIsResumeOpen(true)} />
+          <Projects />
+          <Skills />
+          <Experience />
+          <Education />
+          <Certifications />
+          <Contact />
+        </main>
+
+        <Footer />
+
+        <ResumeModal
+          isOpen={isResumeOpen}
+          onClose={() => setIsResumeOpen(false)}
+        />
+      </div>
     </div>
   );
 }
