@@ -10,8 +10,7 @@ export const Footer: React.FC = () => {
   return (
     <footer
       style={{
-        background: 'rgba(10, 13, 20, 0.65)',
-        backdropFilter: 'blur(12px)',
+        background: 'var(--bg-secondary)',
         borderTop: '1px solid var(--border-color)',
         padding: '2.5rem 0',
       }}

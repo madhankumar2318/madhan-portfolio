@@ -6,7 +6,7 @@ export const Experience: React.FC = () => {
   const { experiences } = portfolioData;
 
   return (
-    <section id="experience" className="section" style={{ background: 'transparent' }}>
+    <section id="experience" className="section" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container perspective-viewport">
         
         {/* Section Header */}

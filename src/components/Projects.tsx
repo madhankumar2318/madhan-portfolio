@@ -8,7 +8,7 @@ export const Projects: React.FC = () => {
   const projects = portfolioData.projects;
 
   return (
-    <section id="projects" className="section" style={{ background: 'transparent' }}>
+    <section id="projects" className="section" style={{ background: 'var(--bg-secondary)' }}>
       <div className="container perspective-viewport">
         
         {/* Section Header */}

@@ -4,6 +4,7 @@ import { Download, Mail, Check, ArrowRight, Sparkles, MapPin } from 'lucide-reac
 import { GithubIcon, LinkedinIcon, LeetcodeIcon } from './Icons';
 import { GlassSpotlight } from './GlassSpotlight';
 import { AnimatedStat } from './AnimatedStat';
+import { GeometryBackground } from './GeometryBackground';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -20,7 +21,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <section id="hero" className="section" style={{ paddingTop: '8rem', paddingBottom: '6rem', position: 'relative' }}>
+    <section id="hero" className="section" style={{ paddingTop: '8rem', paddingBottom: '6rem', position: 'relative', overflow: 'hidden' }}>
+      
+      {/* 3D Smooth Aurora & Star Dust Background — Hero Section Exclusive */}
+      <GeometryBackground />
 
       {/* Background Glow Orbs */}
       <div
