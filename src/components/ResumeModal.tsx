@@ -1,6 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { X, Printer, Download, Mail, MapPin, Globe, Phone, GraduationCap, Award, Briefcase, Code2 } from 'lucide-react';
+import { X, Printer, Download } from 'lucide-react';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -10,14 +10,13 @@ interface ResumeModalProps {
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  const { personal, experiences, projects, education, certifications, skillCategories } = portfolioData;
+  const { personal, experiences, projects, certifications, softSkills } = portfolioData;
 
   const handlePrint = () => {
     window.print();
   };
 
   const handleDownloadPDF = () => {
-    // Opens browser print dialog pre-configured as Save to PDF
     window.print();
   };
 
@@ -30,9 +29,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         right: 0,
         bottom: 0,
         zIndex: 10000,
-        background: 'rgba(0, 0, 0, 0.85)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
+        background: 'rgba(0, 0, 0, 0.88)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -41,45 +40,53 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       onClick={onClose}
     >
       <div
-        className="glass-card"
         style={{
           width: '100%',
-          maxWidth: '900px',
-          maxHeight: '92vh',
-          background: 'var(--bg-secondary)',
-          borderRadius: 'var(--radius-lg)',
+          maxWidth: '920px',
+          maxHeight: '94vh',
+          background: '#0d1117',
+          borderRadius: '16px',
           overflowY: 'auto',
-          boxShadow: 'var(--shadow-3d)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(99, 102, 241, 0.2)',
           position: 'relative',
-          border: '1px solid var(--border-glow)',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Sticky Action Header */}
+        {/* Sticky Modal Control Bar */}
         <div
           style={{
             position: 'sticky',
             top: 0,
-            zIndex: 10,
-            background: 'var(--bg-tertiary)',
+            zIndex: 20,
+            background: 'rgba(22, 27, 34, 0.95)',
+            backdropFilter: 'blur(10px)',
             padding: '1rem 1.8rem',
-            borderBottom: '1px solid var(--border-color)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700 }}>
-            <span>{personal.name} — Official Resume / CV</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontWeight: 700, color: '#f0f6fc', fontSize: '1rem' }}>
+            <span>📄 Official Resume — {personal.name}</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            <button onClick={handleDownloadPDF} className="btn btn-primary" style={{ padding: '0.4rem 0.9rem', fontSize: '0.85rem' }}>
+            <button
+              onClick={handleDownloadPDF}
+              className="btn btn-primary"
+              style={{ padding: '0.45rem 1rem', fontSize: '0.85rem' }}
+            >
               <Download size={16} />
               <span>Download PDF</span>
             </button>
 
-            <button onClick={handlePrint} className="btn btn-outline" style={{ padding: '0.4rem 0.9rem', fontSize: '0.85rem' }}>
+            <button
+              onClick={handlePrint}
+              className="btn btn-outline"
+              style={{ padding: '0.45rem 1rem', fontSize: '0.85rem' }}
+            >
               <Printer size={16} />
               <span>Print</span>
             </button>
@@ -87,16 +94,17 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <button
               onClick={onClose}
               style={{
-                width: '34px',
-                height: '34px',
-                borderRadius: 'var(--radius-full)',
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--border-color)',
-                color: 'var(--text-primary)',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                color: '#f0f6fc',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
+                transition: 'all 0.2s ease',
               }}
             >
               <X size={18} />
@@ -104,112 +112,140 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
         </div>
 
-        {/* Printable Resume Content Container */}
-        <div style={{ padding: '2.5rem 2rem' }}>
-          
+        {/* Official Paper Document View */}
+        <div
+          id="printable-resume"
+          style={{
+            padding: '3rem 3.5rem',
+            background: '#ffffff',
+            color: '#111111',
+            fontFamily: '"Computer Modern", "Times New Roman", Times, Georgia, serif',
+            lineHeight: '1.45',
+            fontSize: '10.5pt',
+          }}
+        >
           {/* Header */}
-          <div style={{ borderBottom: '2px solid var(--accent-primary)', paddingBottom: '1.5rem', marginBottom: '1.8rem' }}>
-            <h1 style={{ fontSize: '2.4rem', color: 'var(--text-primary)', marginBottom: '0.4rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.2rem' }}>
+            <h1 style={{ fontSize: '24pt', fontWeight: 'bold', margin: '0 0 4px 0', letterSpacing: '0.5px', color: '#000000', fontFamily: 'inherit' }}>
               {personal.name}
             </h1>
-            <div style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--accent-primary)', marginBottom: '1rem' }}>
-              {personal.title}
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.2rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Phone size={14} color="var(--accent-cyan)" /> {personal.phone}
-              </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Mail size={14} color="var(--accent-cyan)" /> {personal.email}
-              </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <MapPin size={14} color="var(--accent-cyan)" /> {personal.location}
-              </span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Globe size={14} color="var(--accent-cyan)" /> github.com/madhankumar2318
-              </span>
+            <div style={{ fontSize: '10pt', color: '#222222' }}>
+              {personal.phone} |{' '}
+              <a href={`mailto:${personal.email}`} style={{ color: '#111111', textDecoration: 'underline' }}>
+                {personal.email}
+              </a>{' '}
+              |{' '}
+              <a href={personal.socials.linkedin} target="_blank" rel="noreferrer" style={{ color: '#111111', textDecoration: 'underline' }}>
+                LinkedIn
+              </a>{' '}
+              |{' '}
+              <a href={personal.socials.github} target="_blank" rel="noreferrer" style={{ color: '#111111', textDecoration: 'underline' }}>
+                GitHub
+              </a>{' '}
+              |{' '}
+              <a href="#hero" onClick={onClose} style={{ color: '#111111', textDecoration: 'underline' }}>
+                Portfolio
+              </a>
             </div>
           </div>
 
-          {/* Education */}
-          <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent-primary)', marginBottom: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <GraduationCap size={18} /> Education
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {education.map((edu) => (
-                <div key={edu.id} style={{ background: 'var(--bg-tertiary)', padding: '1rem 1.2rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
-                    <strong style={{ fontSize: '1rem', color: 'var(--text-primary)' }}>{edu.institution}</strong>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{edu.period}</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', color: 'var(--accent-cyan)' }}>
-                    <span>{edu.degree}</span>
-                    <strong>{edu.score}</strong>
-                  </div>
+          {/* Section: Education */}
+          <div style={{ marginBottom: '1.2rem' }}>
+            <div style={{ fontSize: '12pt', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #111111', paddingBottom: '2px', marginBottom: '6px' }}>
+              EDUCATION
+            </div>
+            
+            {/* College */}
+            <div style={{ marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
+                <span>J.J.College of Engineering and Technology</span>
+                <span>Trichy</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontStyle: 'italic' }}>
+                <span>B.Tech in Artificial Intelligence and Data Science - CGPA : 8.02</span>
+                <span>Aug. 2023 – May 2027</span>
+              </div>
+            </div>
+
+            {/* School */}
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
+                <span>Shri Jayendra Vidhyalaya CBSE School</span>
+                <span>Musiri</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontStyle: 'italic' }}>
+                <span>SSLC : 81% - HSC : 63%</span>
+                <span>June 2016 – May 2023</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Section: Technical Skills */}
+          <div style={{ marginBottom: '1.2rem' }}>
+            <div style={{ fontSize: '12pt', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #111111', paddingBottom: '2px', marginBottom: '6px' }}>
+              TECHNICAL SKILLS
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              <div>
+                <strong>Languages:</strong> Java, JavaScript, SQL, HTML, CSS
+              </div>
+              <div>
+                <strong>Frameworks:</strong> React, Spring Boot
+              </div>
+              <div>
+                <strong>Developer Tools:</strong> Git, GitHub, Docker, AWS, IntelliJ
+              </div>
+              <div>
+                <strong>Soft Skills :</strong> {softSkills.join(', ')}
+              </div>
+            </div>
+          </div>
+
+          {/* Section: Experience */}
+          <div style={{ marginBottom: '1.2rem' }}>
+            <div style={{ fontSize: '12pt', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #111111', paddingBottom: '2px', marginBottom: '6px' }}>
+              EXPERIENCE
+            </div>
+            {experiences.map((exp) => (
+              <div key={exp.id}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
+                  <span>{exp.role}</span>
+                  <span>{exp.period}</span>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technical Skills */}
-          <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent-primary)', marginBottom: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Code2 size={18} /> Technical Skills
-            </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
-              {skillCategories.map((cat) => (
-                <div key={cat.category} style={{ background: 'var(--bg-tertiary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ fontWeight: 700, fontSize: '0.88rem', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>
-                    {cat.category}
-                  </div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                    {cat.skills.map((s) => s.name).join(' • ')}
-                  </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontStyle: 'italic', marginBottom: '4px' }}>
+                  <span>{exp.company}</span>
+                  <span>{exp.location}</span>
                 </div>
-              ))}
-            </div>
+                <ul style={{ margin: '0', paddingLeft: '18px' }}>
+                  {exp.keyAchievements.map((ach, i) => (
+                    <li key={i} style={{ marginBottom: '3px' }}>
+                      {ach}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          {/* Experience */}
-          <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent-primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Briefcase size={18} /> Experience
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {experiences.map((exp) => (
-                <div key={exp.id}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem' }}>
-                    <span style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '1.05rem' }}>
-                      {exp.role} — <span style={{ color: 'var(--accent-cyan)' }}>{exp.company}</span> ({exp.location})
-                    </span>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{exp.period}</span>
-                  </div>
-                  <ul style={{ paddingLeft: '1.2rem', marginTop: '0.4rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                    {exp.keyAchievements.map((ach, i) => (
-                      <li key={i} style={{ marginBottom: '0.4rem', lineHeight: 1.5 }}>{ach}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+          {/* Section: Projects */}
+          <div style={{ marginBottom: '1.2rem' }}>
+            <div style={{ fontSize: '12pt', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #111111', paddingBottom: '2px', marginBottom: '6px' }}>
+              PROJECTS
             </div>
-          </div>
-
-          {/* Projects */}
-          <div style={{ marginBottom: '2rem' }}>
-            <h3 style={{ fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent-primary)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Code2 size={18} /> Key Projects
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {projects.map((proj) => (
-                <div key={proj.id} style={{ background: 'var(--bg-tertiary)', padding: '1rem 1.2rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '0.3rem' }}>
-                    {proj.title} <span style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)' }}>({proj.techStack.join(', ')})</span>
+                <div key={proj.id}>
+                  <div style={{ fontWeight: 'bold', fontSize: '11pt' }}>
+                    {proj.title}
                   </div>
-                  <ul style={{ paddingLeft: '1.2rem', fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                    {proj.impactMetrics.map((m, i) => (
-                      <li key={i} style={{ marginBottom: '0.2rem' }}>{m}</li>
+                  <div style={{ fontStyle: 'italic', fontSize: '9.5pt', marginBottom: '3px', color: '#333333' }}>
+                    {proj.techStack.join(', ')}
+                  </div>
+                  <ul style={{ margin: '0', paddingLeft: '18px' }}>
+                    {proj.impactMetrics.map((metric, i) => (
+                      <li key={i} style={{ marginBottom: '2px' }}>
+                        {metric}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -217,16 +253,15 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </div>
           </div>
 
-          {/* Certifications */}
+          {/* Section: Certifications */}
           <div>
-            <h3 style={{ fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--accent-primary)', marginBottom: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Award size={18} /> Certifications
-            </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.8rem', fontSize: '0.9rem' }}>
-              {certifications.map((c) => (
-                <div key={c.title} style={{ background: 'var(--bg-tertiary)', padding: '0.8rem 1rem', borderRadius: 'var(--radius-sm)' }}>
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', fontSize: '0.88rem' }}>{c.title}</strong>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--accent-cyan)' }}>{c.issuer}</span>
+            <div style={{ fontSize: '12pt', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #111111', paddingBottom: '2px', marginBottom: '6px' }}>
+              CERTIFICATIONS
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+              {certifications.map((cert) => (
+                <div key={cert.title}>
+                  <strong>{cert.title}</strong> - {cert.issuer}
                 </div>
               ))}
             </div>

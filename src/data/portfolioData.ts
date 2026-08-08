@@ -63,6 +63,7 @@ export interface PortfolioData {
   };
   projects: Project[];
   skillCategories: SkillCategory[];
+  softSkills: string[];
   experiences: ExperienceItem[];
   education: EducationItem[];
   certifications: CertificationItem[];
@@ -98,7 +99,7 @@ export const portfolioData: PortfolioData = {
       description: 'Full-stack AI platform with 6-tier hybrid search, live YouTube video lookup with 120ms real-time autocomplete, RAG file workspaces, and dark-mode dashboard.',
       impactMetrics: [
         'Built 6-tier hybrid search & live YouTube video lookup with 120ms real-time autocomplete.',
-        'Optimized stock lookup latency by 85% (<3s response time) with interactive mobile trend charts.',
+        'Engineered Yahoo Session & Crumb API caching to drop stock fetch latency from 20s to 3s.',
         'Integrated RAG file workspaces, AI PDF report generation, and an OLED dark-mode dashboard.',
       ],
       architectureHighlights: ['RAG Vector Workspaces', 'Next.js Edge API', 'FastAPI Microservices'],
@@ -114,9 +115,9 @@ export const portfolioData: PortfolioData = {
       category: 'Full-Stack',
       description: 'Next.js 16 portal featuring role-based dashboards for Citizens, Officers, & Chiefs powered by Google Gemini 2.5 Flash for instant AI complaint classification.',
       impactMetrics: [
-        'Architected full-stack portal with role-based dashboards using Next.js 16 Edge Proxy guards, HTTP-only cookies, & Supabase route security.',
-        'Engineered AI triage engine using Google Gemini 2.5 Flash with structured JSON schemas, GPS photo capture, & voice input.',
-        'Implemented Nodemailer SMTP emails (<10s delivery), Leaflet.js GIS maps, Recharts analytics, & executive PDF exports.',
+        'Architected full-stack portal with role-based dashboards for Citizens, Officers, and Chiefs using Next.js 16 Edge Proxy guards, HTTP-only cookies, and Supabase for route security.',
+        'Engineered AI triage engine using Google Gemini 2.5 Flash with structured JSON schemas for instant complaint classification, paired with GPS photo capture and voice input.',
+        'Implemented Nodemailer SMTP for automated tracking emails delivered in under 10 seconds, interactive Leaflet.js GIS maps, Recharts analytics, and executive PDF report exports.',
       ],
       architectureHighlights: ['Gemini 2.5 Flash Triage', 'Supabase Edge Guards', 'GIS Leaflet Maps'],
       techStack: ['TypeScript', 'Next.js 16', 'React', 'Google Gemini API', 'Supabase', 'Nodemailer', 'Leaflet.js'],
@@ -127,16 +128,16 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 'proj-3',
-      title: 'User Behaviour Analytics Platform',
+      title: 'User Behaviour Analytics',
       category: 'Backend / Cloud',
       description: 'Enterprise-grade insider threat detection and anomaly analysis platform powered by Scikit-Learn Isolation Forest ML, Flask, and WebSockets.',
       impactMetrics: [
-        'Built enterprise UBA platform to detect insider threats, credential misuse, & impossible travel anomalies in real time.',
-        'Developed React security dashboard backed by Flask API, SQLite DB, & Isolation Forest ML risk engine with WebSocket live updates.',
-        'Containerized with Docker Compose, automated PDF reports, Slack alerts, & validated backend stability using 33 automated pytest suites.',
+        'Built an enterprise-grade User Behavior Analytics platform to detect insider threats, credential misuse, and impossible travel anomalies in real time.',
+        'Developed a React security dashboard backed by a Flask API, SQLite database, and an Isolation Forest ML risk engine integrated with WebSocket live updates.',
+        'Containerized using Docker Compose with automated PDF reporting, Slack alerts, and validated backend stability using 33 automated pytest test suites.',
       ],
       architectureHighlights: ['Isolation Forest ML', 'WebSocket Live Updates', 'Docker Compose'],
-      techStack: ['Python', 'React', 'Scikit-Learn', 'SQLite', 'WebSockets', 'Docker', 'Flask'],
+      techStack: ['Python', 'React', 'Scikit-Learn', 'SQLite', 'WebSockets', 'Docker'],
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80',
       liveUrl: '',
       githubUrl: 'https://github.com/madhankumar2318/User-Behaviour-Analytics',
@@ -145,7 +146,7 @@ export const portfolioData: PortfolioData = {
   ],
   skillCategories: [
     {
-      category: 'Programming Languages',
+      category: 'Languages',
       description: 'Core languages used across AI models, full-stack web apps, and backend APIs.',
       skills: [
         { name: 'Java', tag: 'Proficient' },
@@ -156,7 +157,7 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
-      category: 'Frameworks & Libraries',
+      category: 'Frameworks',
       description: 'Modern web frameworks, UI libraries, and microservice APIs.',
       skills: [
         { name: 'React', tag: 'Advanced' },
@@ -164,19 +165,18 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
-      category: 'Cloud, Databases & Tools',
+      category: 'Developer Tools',
       description: 'DevOps, database systems, cloud deployment, and developer tools.',
       skills: [
+        { name: 'Git', tag: 'Advanced' },
+        { name: 'GitHub', tag: 'Advanced' },
         { name: 'Docker', tag: 'Proficient' },
-        { name: 'PostgreSQL', tag: 'Advanced' },
-        { name: 'Supabase', tag: 'Advanced' },
-        { name: 'AWS Cloud', tag: 'Experienced' },
-        { name: 'Git & GitHub', tag: 'Advanced' },
-        { name: 'VS Code', tag: 'Advanced' },
-        { name: 'IntelliJ IDEA', tag: 'Advanced' },
+        { name: 'AWS', tag: 'Experienced' },
+        { name: 'IntelliJ', tag: 'Advanced' },
       ],
     },
   ],
+  softSkills: ['Problem Solving', 'Teamwork'],
   experiences: [
     {
       id: 'exp-1',
@@ -197,26 +197,25 @@ export const portfolioData: PortfolioData = {
   education: [
     {
       id: 'edu-1',
-      institution: 'J.J. College of Engineering and Technology',
+      institution: 'J.J.College of Engineering and Technology',
       degree: 'B.Tech in Artificial Intelligence and Data Science',
-      location: 'Trichy, Tamil Nadu',
+      location: 'Trichy',
       period: 'Aug. 2023 – May 2027',
       score: 'CGPA : 8.02',
     },
     {
       id: 'edu-2',
       institution: 'Shri Jayendra Vidhyalaya CBSE School',
-      degree: 'SSLC & HSC (CBSE Board)',
-      location: 'Musiri, Tamil Nadu',
+      degree: 'SSLC : 81% - HSC : 63%',
+      location: 'Musiri',
       period: 'June 2016 – May 2023',
-      score: 'SSLC: 81% | HSC: 63%',
+      score: 'SSLC : 81% - HSC : 63%',
     },
   ],
   certifications: [
     { title: 'Introduction to Machine Learning', issuer: 'NPTEL' },
-    { title: 'Java Programming', issuer: 'Apollo Computer Education' },
+    { title: 'Java', issuer: 'Apollo Computer Education' },
     { title: 'Cloud Computing Fundamentals', issuer: 'Udemy' },
     { title: 'Claude 101', issuer: 'Anthropic' },
-    { title: 'AI Fluency: AI Capabilities & Limitations', issuer: 'Anthropic' },
   ],
 };
