@@ -187,10 +187,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
               <div>
-                <strong>Languages:</strong> Java, JavaScript, SQL, HTML, CSS
+                <strong>Languages:</strong> Java, SQL
               </div>
               <div>
-                <strong>Frameworks:</strong> React, Spring Boot
+                <strong>Frameworks:</strong> Spring Boot
               </div>
               <div>
                 <strong>Developer Tools:</strong> Git, GitHub, Docker, AWS, IntelliJ

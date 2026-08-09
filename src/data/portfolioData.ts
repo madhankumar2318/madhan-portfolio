@@ -150,17 +150,13 @@ export const portfolioData: PortfolioData = {
       description: 'Core languages used across AI models, full-stack web apps, and backend APIs.',
       skills: [
         { name: 'Java', tag: 'Proficient' },
-        { name: 'JavaScript', tag: 'Advanced' },
         { name: 'SQL', tag: 'Proficient' },
-        { name: 'HTML', tag: 'Advanced' },
-        { name: 'CSS', tag: 'Advanced' },
       ],
     },
     {
       category: 'Frameworks',
       description: 'Modern web frameworks, UI libraries, and microservice APIs.',
       skills: [
-        { name: 'React', tag: 'Advanced' },
         { name: 'Spring Boot', tag: 'Experienced' },
       ],
     },
