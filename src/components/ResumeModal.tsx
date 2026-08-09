@@ -10,7 +10,7 @@ interface ResumeModalProps {
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
-  const { personal, experiences, projects, certifications, softSkills } = portfolioData;
+  const { personal, experiences, projects, softSkills } = portfolioData;
 
   const handlePrint = () => {
     window.print();
@@ -259,7 +259,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               CERTIFICATIONS
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-              {certifications.map((cert) => (
+              {portfolioData.resumeCertifications.map((cert) => (
                 <div key={cert.title}>
                   <strong>{cert.title}</strong> - {cert.issuer}
                 </div>

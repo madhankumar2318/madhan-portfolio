@@ -42,8 +42,6 @@ export interface EducationItem {
 export interface CertificationItem {
   title: string;
   issuer: string;
-  category?: string;
-  link?: string;
 }
 
 export interface PortfolioData {
@@ -69,6 +67,7 @@ export interface PortfolioData {
   experiences: ExperienceItem[];
   education: EducationItem[];
   certifications: CertificationItem[];
+  resumeCertifications: CertificationItem[];
 }
 
 export const portfolioData: PortfolioData = {
@@ -211,31 +210,16 @@ export const portfolioData: PortfolioData = {
     },
   ],
   certifications: [
-    {
-      title: 'AI Fluency: AI Capabilities & Limitations',
-      issuer: 'Anthropic',
-      category: 'Generative AI & LLM Systems',
-      link: '/Anthropic_AI_Fluency_Certificate.pdf',
-    },
-    {
-      title: 'Introduction to Machine Learning',
-      issuer: 'NPTEL',
-      category: 'Machine Learning & Data Science',
-    },
-    {
-      title: 'Java',
-      issuer: 'Apollo Computer Education',
-      category: 'Core Java & Object-Oriented Architecture',
-    },
-    {
-      title: 'Cloud Computing Fundamentals',
-      issuer: 'Udemy',
-      category: 'AWS & Cloud Infrastructure',
-    },
-    {
-      title: 'Claude 101',
-      issuer: 'Anthropic',
-      category: 'Prompt Engineering & AI Workflows',
-    },
+    { title: 'AI Fluency: AI Capabilities & Limitations', issuer: 'Anthropic' },
+    { title: 'Introduction to Machine Learning', issuer: 'NPTEL' },
+    { title: 'Java', issuer: 'Apollo Computer Education' },
+    { title: 'Cloud Computing Fundamentals', issuer: 'Udemy' },
+    { title: 'Claude 101', issuer: 'Anthropic' },
+  ],
+  resumeCertifications: [
+    { title: 'Introduction to Machine Learning', issuer: 'NPTEL' },
+    { title: 'Java', issuer: 'Apollo Computer Education' },
+    { title: 'Cloud Computing Fundamentals', issuer: 'Udemy' },
+    { title: 'Claude 101', issuer: 'Anthropic' },
   ],
 };
