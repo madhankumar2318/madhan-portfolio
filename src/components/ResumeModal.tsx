@@ -162,7 +162,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <span>Trichy</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontStyle: 'italic' }}>
-                <span>B.Tech in Artificial Intelligence and Data Science - CGPA : 8.02</span>
+                <span>B.Tech in Artificial Intelligence and Data Science - CGPA : 8.0</span>
                 <span>Aug. 2023 – May 2027</span>
               </div>
             </div>

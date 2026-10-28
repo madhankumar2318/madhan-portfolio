@@ -81,7 +81,7 @@ export const portfolioData: PortfolioData = {
     bio: 'AI & Data Science Student & SDE Intern at Cothon Solutions. I specialize in building fast web applications, intelligent AI tools, and scalable full-stack products.',
     stats: [
       { label: 'Department', value: 'AI & DS' },
-      { label: 'Academic CGPA', value: '8.02 / 10' },
+      { label: 'Academic CGPA', value: '8.0 / 10' },
       { label: 'Graduation Year', value: '2027' },
       { label: 'Production Projects', value: '3 Major' },
     ],
@@ -198,7 +198,7 @@ export const portfolioData: PortfolioData = {
       degree: 'B.Tech in Artificial Intelligence and Data Science',
       location: 'Trichy',
       period: 'Aug. 2023 – May 2027',
-      score: 'CGPA : 8.02',
+      score: 'CGPA : 8.0',
     },
     {
       id: 'edu-2',
